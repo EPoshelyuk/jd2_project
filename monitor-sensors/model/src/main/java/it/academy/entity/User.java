@@ -18,9 +18,9 @@ import javax.persistence.*;
 public class User {
     @Id
     @Column(name = "USER_ID")
-    @GeneratedValue(generator = "uuid-generator")
-    @GenericGenerator(name = "uuid-generator", strategy = "uuid")
-    private String UserId;
+    @GeneratedValue(generator = "increment-generator")
+    @GenericGenerator(name = "increment-generator", strategy = "increment")
+    private Long UserId;
 
     @Column(name = "USER_LOGIN")
     private String login;

@@ -17,9 +17,9 @@ public class Unit {
 
     @Id
     @Column(name = "U_ID")
-    @GeneratedValue(generator = "uuid-generator")
-    @GenericGenerator(name = "uuid-generator", strategy = "uuid")
-    private String unitId;
+    @GeneratedValue(generator = "uuid-increment")
+    @GenericGenerator(name = "uuid-increment", strategy = "increment")
+    private Long unitId;
 
     @Column(name = "U_UNIT")
     private String unit;

@@ -16,9 +16,9 @@ public class SensorType {
 
     @Id
     @Column(name = "ST_ID")
-    @GeneratedValue(generator = "uuid-generator")
-    @GenericGenerator(name = "uuid-generator", strategy = "uuid")
-    private String typeId;
+    @GeneratedValue(generator = "uuid-increment")
+    @GenericGenerator(name = "uuid-increment", strategy = "increment")
+    private Long typeId;
 
     @Column(name = "ST_NAME")
     private String typeName;
