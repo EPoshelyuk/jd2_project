@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="e.poshelyuk">
+        <sql>
+            create database if not exists monitor_sensors;
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="e.poshelyuk">
+        <sql>
+            create table if not exists monitor_sensors.T_SENSORS_SPEC(
+            SS_ID varchar(50) not null primary key,
+            SS_MODEL varchar(50),
+            SS_TYPE varchar(50),
+            SS_UNIT varchar(50),
+            SS_RF double,
+            SS_RT double
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="3" author="e.poshelyuk">
+        <sql>
+            create table if not exists monitor_sensors.T_SENSORS(
+            S_ID varchar(50) not null primary key,
+            S_NAME varchar(50),
+            S_LOCATION varchar(500),
+            S_DESCRIPTION varchar(500),
+            SS_ID varchar(50),
+            FOREIGN KEY (SS_ID) REFERENCES monitor_sensors.T_SENSORS_SPEC(SS_ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="4" author="e.poshelyuk">
+        <sql>
+            insert into monitor_sensors.T_SENSORS_SPEC(SS_ID, SS_MODEL, SS_TYPE, SS_UNIT, SS_RF, SS_RT) values
+            ('9028e671778d1c4501778d1c56c90444','PC33-56', 'Pressure', 'bar', 0, 16);
+            insert into monitor_sensors.T_SENSORS_SPEC(SS_ID, SS_MODEL, SS_TYPE, SS_UNIT, SS_RF, SS_RT) values
+            ('9028e671778d1c4501778d1c56c90443', 'EH-567', 'Voltage', 'V', -25, 25);
+            insert into monitor_sensors.T_SENSORS_SPEC(SS_ID, SS_MODEL, SS_TYPE, SS_UNIT, SS_RF, SS_RT) values
+            ('9028e671778d1c4501778d1c56c90442', 'TER-21', 'Temperature', 'temp', -70, 50);
+            insert into monitor_sensors.T_SENSORS_SPEC(SS_ID, SS_MODEL, SS_TYPE, SS_UNIT, SS_RF, SS_RT) values
+            ('9028e671778d1c4501778d1c56c90441', 'H94', 'Humidity', 'per', 0, 100);
+        </sql>
+    </changeSet>
+
+    <changeSet id="5" author="e.poshelyuk">
+        <sql>
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('1028e671778d1c4501778d1c56c90005', 'Sensor1', 'Room1', 'Description1', '9028e671778d1c4501778d1c56c90444');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('2028e671778d1c4501778d1c56c90005','Sensor2', 'Room2', 'Description2', '9028e671778d1c4501778d1c56c90443');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('3028e671778d1c4501778d1c56c90005','Sensor3', 'Room3', 'Description3', '9028e671778d1c4501778d1c56c90442');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('4028e671778d1c4501778d1c56c90005','Sensor4', 'Room4', 'Description4', '9028e671778d1c4501778d1c56c90441');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('5028e671778d1c4501778d1c56c90005','Sensor5', 'Room4', 'Description4', '9028e671778d1c4501778d1c56c90443');
+        </sql>
+    </changeSet>
+    <changeSet id="6" author="e.poshelyuk">
+        <sql>
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('6028e671778d1c4501778d1c56c90005', 'Sensor11', 'Room1', 'Description11', '9028e671778d1c4501778d1c56c90444');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('7028e671778d1c4501778d1c56c90005','Sensor12', 'Room2', 'Description12', '9028e671778d1c4501778d1c56c90443');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('8028e671778d1c4501778d1c56c90005','Sensor13', 'Room3', 'Description13', '9028e671778d1c4501778d1c56c90442');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('9028e671778d1c4501778d1c56c90005','Sensor14', 'Room4', 'Description14', '9028e671778d1c4501778d1c56c90441');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('1628e671778d1c4501778d1c56c90005','Sensor15', 'Room4', 'Description15', '9028e671778d1c4501778d1c56c90443');
+        </sql>
+    </changeSet>
+    <changeSet id="7" author="e.poshelyuk">
+        <sql>
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('1128e671778d1c4501778d1c56c90005', 'Sensor6', 'Room1', 'Description5', '9028e671778d1c4501778d1c56c90444');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('1228e671778d1c4501778d1c56c90005','Sensor7', 'Room2', 'Description6', '9028e671778d1c4501778d1c56c90443');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('1328e671778d1c4501778d1c56c90005','Sensor8', 'Room3', 'Description7', '9028e671778d1c4501778d1c56c90442');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('1428e671778d1c4501778d1c56c90005','Sensor9', 'Room4', 'Description8', '9028e671778d1c4501778d1c56c90441');
+            insert into monitor_sensors.T_SENSORS(S_ID, S_NAME, S_LOCATION, S_DESCRIPTION, SS_ID) values
+            ('1528e671778d1c4501778d1c56c90005','Sensor10', 'Room4', 'Description9', '9028e671778d1c4501778d1c56c90443');
+        </sql>
+    </changeSet>
+
+    <changeSet id="8" author="e.poshelyuk">
+        <sql>
+            create table if not exists monitor_sensors.T_USERS(
+            U_ID varchar(50) not null primary key,
+            U_USERNAME varchar(50),
+            U_PASSWORD varchar(100) not null,
+            U_ROLE varchar(50) not null,
+            U_ENABLED BOOLEAN
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="9" author="e.poshelyuk">
+        <sql>
+            insert into monitor_sensors.T_USERS(U_ID, U_USERNAME, U_PASSWORD, U_ROLE, U_ENABLED) values
+            ('9028e671778d1c4501778d1c56c90333', 'ADMIN', '$2y$12$OFY2dz4nIA5Ysh6intDis.sj4sY6VT50yTlCdKyjxxbB1C/xQ7HfO', 'ADMIN', true);
+            insert into monitor_sensors.T_USERS(U_ID, U_USERNAME, U_PASSWORD, U_ROLE, U_ENABLED) values
+            ('9028e671778d1c4501778d1c56c90331', 'USER', '$2y$12$4XRwZR/9Xov2HmCPz68ddef.9XJhfGkQ9222vKMwobVKMYPSH9i3m', 'USER', true);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
