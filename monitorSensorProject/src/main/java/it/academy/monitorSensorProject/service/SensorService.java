@@ -1,11 +1,9 @@
 package it.academy.monitorSensorProject.service;
 
-
 import it.academy.monitorSensorProject.service.dto.SensorDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public interface SensorService {

@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "T_USERS")
@@ -31,6 +29,5 @@ public class User {
 
     @Column(name = "U_ENABLED")
     private boolean enabled;
-
 
 }

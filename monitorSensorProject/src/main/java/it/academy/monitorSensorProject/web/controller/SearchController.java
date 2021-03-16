@@ -1,6 +1,5 @@
 package it.academy.monitorSensorProject.web.controller;
 
-
 import it.academy.monitorSensorProject.repository.SensorRepository;
 import it.academy.monitorSensorProject.service.dto.SensorDTO;
 import it.academy.monitorSensorProject.service.impl.SensorsServiceImpl;
@@ -17,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SearchController {
 
+    private final SensorsServiceImpl sensorsServiceImpl;
+
     @Autowired
-    SensorsServiceImpl sensorsServiceImpl;
-    @Autowired
-    SensorRepository sensorRepository;
+    public SearchController(SensorsServiceImpl sensorsServiceImpl) {
+        this.sensorsServiceImpl = sensorsServiceImpl;
+    }
 
     @GetMapping("/allsensors/search")
     public String search(@RequestParam(name = "searchParam", required = false) String param, Model model,
@@ -37,4 +38,5 @@ public class SearchController {
         }
         return "search_result";
     }
+
 }

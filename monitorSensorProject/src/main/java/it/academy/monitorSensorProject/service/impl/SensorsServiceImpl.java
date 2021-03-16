@@ -6,12 +6,10 @@ import it.academy.monitorSensorProject.repository.entity.SensorSpec;
 import it.academy.monitorSensorProject.service.SensorService;
 import it.academy.monitorSensorProject.service.converter.SensorConverter;
 import it.academy.monitorSensorProject.service.dto.SensorDTO;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class SensorsServiceImpl implements SensorService {
@@ -25,12 +23,10 @@ public class SensorsServiceImpl implements SensorService {
         this.converter = converter;
     }
 
-
     @Override
     public Page<SensorDTO> searchSensorsByParam(String param, Pageable pageable) {
         return sensorRepository.searchSensorsByParam(param, pageable).map(sensor -> converter.toDTO(sensor));
     }
-
 
     @Override
     public void saveNewSensor(SensorDTO sensorDTO) {
@@ -40,25 +36,22 @@ public class SensorsServiceImpl implements SensorService {
     @Override
     public SensorDTO getSensorById(String id) {
         return converter.toDTO(sensorRepository.getOne(id));
-
     }
 
     @Override
     public void updateSensor(String id, SensorDTO sensorDTO) {
 
         Sensor sensor = sensorRepository.getOne(id);
-
-        SensorSpec sensorSpec=sensor.getSensorSpec();
-
         sensor.setName(sensorDTO.getName());
-        sensor.setDescription(sensorDTO.getDescription());
         sensor.setLocation(sensorDTO.getLocation());
+        sensor.setDescription(sensorDTO.getDescription());
 
+        SensorSpec sensorSpec = new SensorSpec();
         sensorSpec.setModel(sensorDTO.getModel());
         sensorSpec.setUnit(sensorDTO.getUnit());
         sensorSpec.setType(sensorDTO.getType());
-        sensorSpec.setRangeTo(sensorDTO.getRangeTo());
         sensorSpec.setRangeFrom(sensorDTO.getRangeFrom());
+        sensorSpec.setRangeTo(sensorDTO.getRangeTo());
 
         sensor.setSensorSpec(sensorSpec);
 
@@ -70,11 +63,8 @@ public class SensorsServiceImpl implements SensorService {
         sensorRepository.deleteById(id);
     }
 
-
     public Page<SensorDTO> findAllSensors(Pageable pageable) {
         return sensorRepository.findAll(pageable).map(sensor -> converter.toDTO(sensor));
     }
-
-
 }
 

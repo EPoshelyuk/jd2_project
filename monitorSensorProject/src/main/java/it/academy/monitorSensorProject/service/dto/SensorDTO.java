@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotBlank;
-
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Component
 public class SensorDTO {
 
     private String sensorId;
@@ -38,5 +39,6 @@ public class SensorDTO {
     private double rangeFrom;
 
     private double rangeTo;
+
 }
 

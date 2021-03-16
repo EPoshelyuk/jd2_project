@@ -1,6 +1,5 @@
 package it.academy.monitorSensorProject.service.converter;
 
-
 import it.academy.monitorSensorProject.repository.entity.User;
 import it.academy.monitorSensorProject.service.dto.UserDTO;
 import lombok.Data;
@@ -30,4 +29,5 @@ public class UserConverter {
         userDTO.setEnabled(user.isEnabled());
         return userDTO;
     }
+
 }

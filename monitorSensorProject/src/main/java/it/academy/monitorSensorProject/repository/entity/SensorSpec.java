@@ -1,13 +1,11 @@
 package it.academy.monitorSensorProject.repository.entity;
 
-
 import it.academy.monitorSensorProject.repository.entity.enums.Type;
 import it.academy.monitorSensorProject.repository.entity.enums.Unit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.List;
 

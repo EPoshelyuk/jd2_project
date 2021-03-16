@@ -1,6 +1,5 @@
 package it.academy.monitorSensorProject.web.security;
 
-
 import it.academy.monitorSensorProject.service.UserService;
 import it.academy.monitorSensorProject.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         return new it.academy.monitorSensorProject.web.security.MyUserDetails(user);
     }
-
-
-
 }

@@ -1,7 +1,5 @@
 package it.academy.monitorSensorProject.service.converter;
 
-
-
 import it.academy.monitorSensorProject.repository.entity.Sensor;
 import it.academy.monitorSensorProject.repository.entity.SensorSpec;
 import it.academy.monitorSensorProject.service.dto.SensorDTO;
@@ -15,37 +13,37 @@ import org.springframework.stereotype.Component;
 public class SensorConverter {
 
     public Sensor fromDTO(SensorDTO sensorDTO) {
-        SensorSpec sensorSpec= new SensorSpec();
-        Sensor sensor = new Sensor();
 
-        sensor.setSensorId(sensorDTO.getSensorId());
-        sensor.setName(sensorDTO.getName());
-        sensor.setDescription(sensorDTO.getDescription());
-        sensor.setLocation(sensorDTO.getLocation());
+      Sensor sensor= new Sensor();
+      sensor.setSensorId(sensorDTO.getSensorId());
+      sensor.setName(sensorDTO.getName());
+      sensor.setDescription(sensorDTO.getDescription());
+      sensor.setLocation(sensorDTO.getLocation());
 
-        sensorSpec.setModel(sensorDTO.getModel());
-        sensorSpec.setType(sensorDTO.getType());
-        sensorSpec.setUnit(sensorDTO.getUnit());
-        sensorSpec.setRangeFrom(sensorDTO.getRangeFrom());
-        sensorSpec.setRangeTo(sensorDTO.getRangeTo());
+      SensorSpec sensorSpec= new SensorSpec();
+      sensorSpec.setModel(sensorDTO.getModel());
+      sensorSpec.setType(sensorDTO.getType());
+      sensorSpec.setUnit(sensorDTO.getUnit());
+      sensorSpec.setRangeTo(sensorDTO.getRangeTo());
+      sensorSpec.setRangeFrom(sensorDTO.getRangeFrom());
 
-        sensor.setSensorSpec(sensorSpec);
+      sensor.setSensorSpec(sensorSpec);
+      return sensor;
 
-        return sensor;
     }
+
     public SensorDTO toDTO(Sensor sensor) {
         SensorDTO sensorDTO = new SensorDTO();
-
         sensorDTO.setSensorId(sensor.getSensorId());
         sensorDTO.setName(sensor.getName());
+        sensorDTO.setModel(sensor.getSensorSpec().getModel());
         sensorDTO.setDescription(sensor.getDescription());
         sensorDTO.setLocation(sensor.getLocation());
-
-        sensorDTO.setModel(sensor.getSensorSpec().getModel());
-        sensorDTO.setType(sensor.getSensorSpec().getType());
-        sensorDTO.setUnit(sensor.getSensorSpec().getUnit());
         sensorDTO.setRangeFrom(sensor.getSensorSpec().getRangeFrom());
         sensorDTO.setRangeTo(sensor.getSensorSpec().getRangeTo());
-        return sensorDTO;
+        sensorDTO.setType(sensor.getSensorSpec().getType());
+        sensorDTO.setUnit(sensor.getSensorSpec().getUnit());
+        return  sensorDTO;
     }
+
 }

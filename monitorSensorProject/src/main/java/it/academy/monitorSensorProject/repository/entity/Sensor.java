@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
@@ -32,4 +31,5 @@ public class Sensor {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn (name="SS_ID")
     private SensorSpec sensorSpec;
+
 }

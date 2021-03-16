@@ -50,7 +50,7 @@
                 <label for="rangeTo" class="col-sm-1 col-form-label col-form-label-sm">Range to</label>
                 <div class="col-2 ml-auto mr-1">
                     <input type="number" class="form-control form-control-sm" step="1" min="-300" max="300"
-                           name="rangeFrom"
+                           name="rangeTo"
                            value="${sensorDTO.rangeTo}" required/>
                 </div>
             </div>
@@ -81,12 +81,13 @@
                 </div>
             </div>
 
-            <div class="row row-m-t">
-                <label for="name" class="col-sm-1 col-form-label col-form-label-sm">Location</label>
+            <div class="form-group required row row-m-t">
+                <label for="location" class="col-sm-1 col-form-label col-form-label-sm">Location</label>
                 <div class="col-5 ml-auto mr-4">
                     <@spring.bind "sensorDTO.location" />
-                    <input type="text" class="form-control form-control-sm" name="location" placeholder="Location"
-                           value="${sensorDTO.location}" maxlength="40">
+                    <input type="text" class="form-control form-control-sm" placeholder="Location"
+                           aria-label="location" aria-describedby="basic-addon2" name="location"
+                           value="${sensorDTO.location!}" required maxlength="40"/>
                     <span class="span"><@spring.showErrors ', ' 'error'/></span>
                 </div>
             </div>
@@ -96,7 +97,7 @@
                 <div class="col-sm-5">
                     <@spring.bind "sensorDTO.description" />
                     <textarea class="form-control" name="description" rows="7"
-                              value="">${sensorDTO.description}</textarea>
+                              value="${sensorDTO.description!}" maxlength="200">${sensorDTO.description}</textarea>
                     <span class="span"><@spring.showErrors ', ' 'error'/></span>
                 </div>
             </div>

@@ -47,7 +47,7 @@
                 <label for="rangeTo" class="col-sm-1 col-form-label col-form-label-sm">Range to</label>
                 <div class="col-2 ml-auto mr-1">
                     <input type="number" class="form-control form-control-sm" step="1" min="-300" max="300"
-                           name="rangeFrom" placeholder="-" required/>
+                           name="rangeTo" placeholder="-" required/>
                 </div>
             </div>
             <div class="row row-m-t">

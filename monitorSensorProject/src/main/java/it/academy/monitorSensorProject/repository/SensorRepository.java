@@ -1,6 +1,5 @@
 package it.academy.monitorSensorProject.repository;
 
-
 import it.academy.monitorSensorProject.repository.entity.Sensor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SensorRepository extends JpaRepository<Sensor, String> {
+
     @Query("SELECT s from Sensor s where s.name like %?1%" +
             "or s.sensorSpec.model like %?1%" +
             "or CONCAT(s.sensorSpec.rangeFrom, '') like %?1%" +
