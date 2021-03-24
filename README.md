@@ -12,6 +12,7 @@ The user with the Administrator role is allowed to perform the next actions:
 - add a new sensor (go to form 3)
 - edit the selected sensor (go to form 4)
 - delete the selected sensor.
+
 By clicking the logout button, the user logs out and is redirected to the login form.
 For non-authorized users, only the Login form is available.
 The data for the table is taken by means of queries from the server side (the data is stored in the database).
